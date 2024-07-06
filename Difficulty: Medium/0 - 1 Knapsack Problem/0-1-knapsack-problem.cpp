@@ -14,8 +14,10 @@ class Solution
        int dp[W+1]={0};
        
        for(int i=0;i<n;i++){
-           for(int j=W;j>=wt[i];j--){
-               dp[j] = max(dp[j], dp[j-wt[i]]+val[i]);
+           for(int j=W;j>=0;j--){
+               if(j-wt[i]>=0){
+                   dp[j] = max(dp[j], dp[j-wt[i]]+val[i]);
+               }
            }
        }
        
