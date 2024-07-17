@@ -3,50 +3,75 @@
 using namespace std;
 
 // } Driver Code Ends
+
+class DSU{
+    vector<int> parent;
+    vector<int> rank;
+    
+    public:
+    
+    DSU(int n){
+        parent = vector<int>(n,-1);
+        rank = vector<int>(n,1);
+    }
+    
+    int find(int i){
+        if(parent[i]==-1){
+            return i;
+        }
+        return parent[i]=find(parent[i]);
+    }
+    
+    void unionSet(int x, int y){
+        int xroot = find(x);
+        int yroot = find(y);
+        
+        if(xroot!=yroot){
+            if(rank[xroot]<rank[yroot]){
+                parent[xroot]=yroot;
+                rank[yroot]+=xroot;
+            }else{
+                parent[yroot]=xroot;
+                rank[xroot]+=yroot;
+            }
+        }
+    }
+};
+
 class Solution
 {
 	public:
 	//Function to find sum of weights of edges of the Minimum Spanning Tree.
     int spanningTree(int V, vector<vector<int>> adj[]) {
-        vector<pair<int, int>> l[V];
-
+        vector<vector<int>> edgeList;
+    
         for (int i = 0; i < V; i++) {
-            for (auto &x : adj[i]) {
+            for (auto x : adj[i]) {
                 int u = i;
                 int v = x[0];
                 int wt = x[1];
-                l[u].push_back({v, wt});
-                l[v].push_back({u, wt});
+                edgeList.push_back({wt, u, v});
             }
         }
-
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
-
-        vector<bool> visited(V, false);
+        
+        sort(edgeList.begin(), edgeList.end());
+        
         int ans = 0;
-        q.push({0, 0}); // wt, node
-
-        while (!q.empty()) {
-            auto best = q.top();
-            q.pop();
-
-            int to = best.second;
-            int wt = best.first;
-
-            if (visited[to]) {
-                continue;
-            }
-
-            ans += wt;
-            visited[to] = true;
-
-            for (auto &x : l[to]) {
-                if (!visited[x.first]) {
-                    q.push({x.second, x.first});
-                }
+        DSU s(V);
+        
+        for (auto edge : edgeList) {
+            int w = edge[0];
+            int x = edge[1];
+            int y = edge[2];
+            
+            if (s.find(x) != s.find(y)) {
+                s.unionSet(x, y);
+                ans += w;
             }
         }
+        
         return ans;
+
     }
 };
 
