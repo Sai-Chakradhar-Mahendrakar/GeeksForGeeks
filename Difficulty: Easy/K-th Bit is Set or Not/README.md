@@ -1,0 +1,11 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/check-whether-k-th-bit-is-set-or-not-1587115620/1">K-th Bit is Set or Not</a></h2><h3>Difficulty Level : Difficulty: Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a number&nbsp;<strong>n&nbsp;</strong>and a bit number&nbsp;<strong>k</strong>, check if&nbsp;<strong>k<sup>th</sup></strong>&nbsp;index bit of&nbsp;<strong>n&nbsp;</strong>is set or not. A bit is called set if it is 1. Position of set bit&nbsp;'1' should be indexed starting with 0&nbsp;from LSB side in&nbsp;binary representation of the number.</span><br><span style="font-size: 18px;"><strong>Note:</strong>&nbsp;Index is starting from 0. You just need to return&nbsp;<strong>true&nbsp;</strong>or&nbsp;<strong>false</strong>, driver code will take care of printing "Yes" and "No".</span></p>
+<p><span style="font-size: 18px;"><strong>Examples :&nbsp;</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input</strong>: n = 4, k = 0
+<strong>Output</strong>: No
+<strong>Explanation</strong>: Binary representation of 4 is 100, in which 0<sup>th</sup> index bit from LSB is not set. So, return false.</span></pre>
+<pre><span style="font-size: 18px;"><strong>Input</strong>: n = 4, k = 2
+<strong>Output</strong>: Yes
+<strong>Explanation</strong>: Binary representation of 4 is 100, in which 2<sup>nd</sup> index bit from LSB is set. So, return true.</span></pre>
+<pre><span style="font-size: 18px;"><strong>Input</strong>: n = 500, k = 3
+<strong>Output</strong>: No
+<strong>Explanation</strong>: Binary representation of 500 is 111110100, in which 3rd index bit from LSB is not set. So, return false.</span><br><span style="font-size: 18px;"><strong><br>Expected Time Complexity:</strong>&nbsp;O(1).<br><strong>Expected Auxiliary Space:</strong>&nbsp;O(1).</span><br><br><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ n ≤ 10<sup>9</sup><br>0 ≤ k ≤ 31</span></pre></div><p><span style=font-size:18px><strong>Company Tags : </strong><br><code>Microsoft</code>&nbsp;<br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Bit Magic</code>&nbsp;<code>Data Structures</code>&nbsp;
