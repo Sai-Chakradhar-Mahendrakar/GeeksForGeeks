@@ -34,9 +34,14 @@ class Solution
             auto top = pq.top();
             pq.pop();
             
-            res.push_back(top.first);
-            if(top.second.second+1 < K){
-                pq.push({arr[top.second.first][top.second.second+1],{top.second.first,top.second.second+1}});
+            int ele=top.first;
+            int a_idx=top.second.first;
+            int e_idx=top.second.second;
+            
+            res.push_back(ele);
+            
+            if(e_idx+1 < K){
+                pq.push({arr[a_idx][e_idx+1],{a_idx,e_idx+1}});
             }
         }
         
