@@ -60,6 +60,7 @@ class Solution {
     }
 };
 
+
 //{ Driver Code Starts.
 
 int main() {
@@ -82,7 +83,7 @@ int main() {
 
         Solution ob;
         auto ans = ob.getFloorAndCeil(x, arr);
-        cout << ans[0] << " " << ans[1] << "\n";
+        cout << ans[0] << " " << ans[1] << "\n~\n";
     }
     return 0;
 }
