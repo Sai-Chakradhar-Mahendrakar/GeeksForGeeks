@@ -2,36 +2,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 // } Driver Code Ends
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
-    bool isCycle(int V, vector<int> adj[]) {
-        vector<int> visited(V, false);
-        for (int i = 0; i < V; ++i) {
-            if (!visited[i]) {
-                if (dfs(adj, visited, i, -1)) {
+    bool isCycle(vector<vector<int>>& adj) {
+        // Code here
+        int V=adj.size();
+        vector<bool> vis(V, false);
+        for(int i=0;i<V;i++){
+            if(!vis[i]){
+                if(dfs(adj, vis, i, -1)){
                     return true;
                 }
             }
         }
         return false;
     }
-    
   private:
-    bool dfs(vector<int> adj[], vector<int>& visited, int node, int parent) {
-        visited[node] = true;
-        
-        for (auto nbr : adj[node]) {
-            if (!visited[nbr]) {
-                if (dfs(adj, visited, nbr, node)) {
+    bool dfs(vector<vector<int>>& adj, vector<bool>& vis, int node, int parent){
+        vis[node]=true;
+        for(auto nbr: adj[node]){
+            if(!vis[nbr]){
+                if(dfs(adj, vis, nbr, node)){
                     return true;
                 }
-            } else if (nbr != parent) {
+            }
+            else if(nbr!=parent){
                 return true;
             }
         }
-        
         return false;
     }
 };
@@ -43,7 +44,7 @@ int main() {
     while (tc--) {
         int V, E;
         cin >> V >> E;
-        vector<int> adj[V];
+        vector<vector<int>> adj(V);
         for (int i = 0; i < E; i++) {
             int u, v;
             cin >> u >> v;
@@ -51,11 +52,14 @@ int main() {
             adj[v].push_back(u);
         }
         Solution obj;
-        bool ans = obj.isCycle(V, adj);
+        bool ans = obj.isCycle(adj);
         if (ans)
             cout << "1\n";
         else
             cout << "0\n";
+
+        cout << "~"
+             << "\n";
     }
     return 0;
 }
