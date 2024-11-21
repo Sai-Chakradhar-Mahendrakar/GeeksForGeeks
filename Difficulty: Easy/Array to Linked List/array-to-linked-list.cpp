@@ -61,6 +61,7 @@ class Solution {
     }
 };
 
+
 //{ Driver Code Starts.
 
 int main() {
@@ -82,7 +83,7 @@ int main() {
             cout << ans->data << " ";
             ans = ans->next;
         }
-        cout << "\n";
+        cout << "\n~\n";
     }
     return 0;
 }
