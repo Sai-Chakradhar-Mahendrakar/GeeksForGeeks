@@ -76,18 +76,16 @@ public:
 class Solution {
   public:
     Node* constructDLL(vector<int>& arr) {
-        // code here
         Node* head=NULL;
         int n=arr.size();
         
         for(int i=n-1;i>=0;i--){
             Node* n = new Node(arr[i]);
             
-            n->next = head;
+            n->next=head;
             if(head!=NULL){
-                head->prev = n;
+                head->prev=n;
             }
-            
             head=n;
         }
         return head;
@@ -108,6 +106,9 @@ int main() {
         Solution obj;
         Node* ans = obj.constructDLL(arr);
         printList(ans);
+
+        cout << "~"
+             << "\n";
     }
     return 0;
 }
