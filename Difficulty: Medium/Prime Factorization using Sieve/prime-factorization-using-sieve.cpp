@@ -38,6 +38,7 @@ class Solution {
     }
 };
 
+
 //{ Driver Code Starts.
 
 int main() {
@@ -60,7 +61,9 @@ int main() {
         cout << endl;
 
         // cout << "~\n";
-    }
+    
+cout << "~" << "\n";
+}
     // fclose(stdout);
 
     return 0;
