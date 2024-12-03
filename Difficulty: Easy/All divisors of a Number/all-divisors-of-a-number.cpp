@@ -9,7 +9,7 @@ class Solution {
     void print_divisors(int n) {
         // Code here.
         vector<int> res;
-        for(int i=1;i<=sqrt(n);i++){
+        for(int i=1;i*i<=n;i++){
             if(n%i==0){
                 if(n/i==i){
                     res.push_back(i);
@@ -28,6 +28,7 @@ class Solution {
     }
 };
 
+
 //{ Driver Code Starts.
 int main() {
     int T;
@@ -38,7 +39,9 @@ int main() {
         Solution ob;
         ob.print_divisors(n);
         cout << endl;
-    }
+    
+cout << "~" << "\n";
+}
     return 0;
 }
 // } Driver Code Ends
