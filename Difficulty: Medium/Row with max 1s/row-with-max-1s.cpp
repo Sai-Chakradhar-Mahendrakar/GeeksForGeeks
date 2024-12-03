@@ -30,7 +30,7 @@ class Solution {
         int e=m-1;
         int ans=m;
         while(s<=e){
-            int mid = s + (e - s) / 2;
+            int mid = (s+e)/2;
             if(arr[mid]>=i){
                 ans=mid;
                 e=mid-1;
@@ -44,25 +44,55 @@ class Solution {
 };
 
 
+
 //{ Driver Code Starts.
+
 int main() {
     int t;
     cin >> t;
+    cin.ignore(); // Ignore the newline character after the integer input
     while (t--) {
-        int n, m;
-        cin >> n >> m;
-        vector<vector<int> > arr(n, vector<int>(m));
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cin >> arr[i][j];
+        string input;
+        getline(cin, input);
+        vector<vector<int>> mat;
+        string innerArray;
+        bool isInsideArray = false;
+
+        for (char c : input) {
+            if (c == '[') {
+                if (isInsideArray) {
+                    innerArray.clear();
+                }
+                isInsideArray = true;
+            } else if (c == ']') {
+                if (isInsideArray && !innerArray.empty()) {
+                    vector<int> row;
+                    stringstream ss(innerArray);
+                    int num;
+
+                    while (ss >> num) {
+                        row.push_back(num);
+                        if (ss.peek() == ',')
+                            ss.ignore();
+                        while (isspace(ss.peek()))
+                            ss.ignore();
+                    }
+
+                    mat.push_back(row);
+                    innerArray.clear();
+                }
+                isInsideArray = false;
+            } else if (isInsideArray) {
+                if (!isspace(c)) {
+                    innerArray += c;
+                }
             }
         }
-        Solution ob;
-        auto ans = ob.rowWithMax1s(arr);
-        cout << ans << "\n";
 
-        cout << "~"
-             << "\n";
+        Solution obj;
+        cout << obj.rowWithMax1s(mat);
+        cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
